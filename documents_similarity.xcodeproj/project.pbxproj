@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		595A16B619E21A6A0093F9E8 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A16B519E21A6A0093F9E8 /* MainController.m */; };
-		595A16B819E21B600093F9E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A16B719E21B600093F9E8 /* Foundation.framework */; };
 		595A16BB19E226750093F9E8 /* DocumentsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A16BA19E226750093F9E8 /* DocumentsParser.m */; };
+		595A170319E606180093F9E8 /* porter2_stemmer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 595A170119E606180093F9E8 /* porter2_stemmer.mm */; };
+		595A170619E608920093F9E8 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A170519E608920093F9E8 /* AppKit.framework */; };
+		595A170919E60A8D0093F9E8 /* NSString+PorterStemmer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 595A170819E60A8D0093F9E8 /* NSString+PorterStemmer.mm */; };
 		59895E1519E212D300BE5418 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59895E1419E212D300BE5418 /* main.m */; };
 		59895E1819E212D300BE5418 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59895E1719E212D300BE5418 /* AppDelegate.m */; };
 		59895E1A19E212D300BE5418 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59895E1919E212D300BE5418 /* Images.xcassets */; };
@@ -33,6 +35,11 @@
 		595A16B719E21B600093F9E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		595A16B919E226750093F9E8 /* DocumentsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentsParser.h; sourceTree = "<group>"; };
 		595A16BA19E226750093F9E8 /* DocumentsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentsParser.m; sourceTree = "<group>"; };
+		595A170119E606180093F9E8 /* porter2_stemmer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = porter2_stemmer.mm; sourceTree = "<group>"; };
+		595A170219E606180093F9E8 /* porter2_stemmer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = porter2_stemmer.h; sourceTree = "<group>"; };
+		595A170519E608920093F9E8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		595A170719E60A8D0093F9E8 /* NSString+PorterStemmer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PorterStemmer.h"; sourceTree = "<group>"; };
+		595A170819E60A8D0093F9E8 /* NSString+PorterStemmer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSString+PorterStemmer.mm"; sourceTree = "<group>"; };
 		59895E0F19E212D300BE5418 /* documents_similarity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = documents_similarity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59895E1319E212D300BE5418 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59895E1419E212D300BE5418 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -50,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				595A16B819E21B600093F9E8 /* Foundation.framework in Frameworks */,
+				595A170619E608920093F9E8 /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		595A170419E6061B0093F9E8 /* PorterStemmer */ = {
+			isa = PBXGroup;
+			children = (
+				595A170119E606180093F9E8 /* porter2_stemmer.mm */,
+				595A170219E606180093F9E8 /* porter2_stemmer.h */,
+			);
+			name = PorterStemmer;
+			sourceTree = "<group>";
+		};
 		59895E0619E212D300BE5418 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +101,7 @@
 		59895E1119E212D300BE5418 /* documents_similarity */ = {
 			isa = PBXGroup;
 			children = (
+				595A170419E6061B0093F9E8 /* PorterStemmer */,
 				59895E1619E212D300BE5418 /* AppDelegate.h */,
 				59895E1719E212D300BE5418 /* AppDelegate.m */,
 				59895E1919E212D300BE5418 /* Images.xcassets */,
@@ -93,6 +110,8 @@
 				595A16B519E21A6A0093F9E8 /* MainController.m */,
 				595A16B919E226750093F9E8 /* DocumentsParser.h */,
 				595A16BA19E226750093F9E8 /* DocumentsParser.m */,
+				595A170719E60A8D0093F9E8 /* NSString+PorterStemmer.h */,
+				595A170819E60A8D0093F9E8 /* NSString+PorterStemmer.mm */,
 				59895E1219E212D300BE5418 /* Supporting Files */,
 			);
 			path = documents_similarity;
@@ -101,6 +120,7 @@
 		59895E1219E212D300BE5418 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				595A170519E608920093F9E8 /* AppKit.framework */,
 				595A16B719E21B600093F9E8 /* Foundation.framework */,
 				59895E1319E212D300BE5418 /* Info.plist */,
 				59895E1419E212D300BE5418 /* main.m */,
@@ -224,10 +244,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59895E1819E212D300BE5418 /* AppDelegate.m in Sources */,
+				595A170319E606180093F9E8 /* porter2_stemmer.mm in Sources */,
 				595A16B619E21A6A0093F9E8 /* MainController.m in Sources */,
-				59895E1519E212D300BE5418 /* main.m in Sources */,
+				59895E1819E212D300BE5418 /* AppDelegate.m in Sources */,
 				595A16BB19E226750093F9E8 /* DocumentsParser.m in Sources */,
+				59895E1519E212D300BE5418 /* main.m in Sources */,
+				595A170919E60A8D0093F9E8 /* NSString+PorterStemmer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,8 +364,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				INFOPLIST_FILE = documents_similarity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -353,8 +377,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				INFOPLIST_FILE = documents_similarity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

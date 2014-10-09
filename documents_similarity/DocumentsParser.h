@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define DOCUMENTS_TITLE_KEY = @"Title"
-#define DOCUMENTS_BODY_KEY = @"Body"
+#define DOCUMENTS_TITLE_KEY @"Title"
+#define DOCUMENTS_BODY_KEY @"Body"
 
 @interface DocumentsParser : NSObject
 
