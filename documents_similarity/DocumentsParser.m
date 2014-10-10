@@ -14,34 +14,30 @@
 
 - (NSArray *)parseDocumentFromFilePath:(NSString *)filePath
 {
-    NSMutableArray *documentsArray = nil;
+    NSMutableArray *documentsArray = [NSMutableArray array];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:filePath]) {
         NSError *error = nil;
         NSString *content = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
         if (!error) {
-            content = [content lowercaseString];
-            content = [[content componentsSeparatedByCharactersInSet:[NSCharacterSet punctuationCharacterSet]] componentsJoinedByString:@""];
             NSArray *documents = [content componentsSeparatedByString:@"\n\n"];
             for (NSString *document in documents) {
                 NSArray *documentLines = [document componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
                 NSString *documentTitle = [documentLines firstObject];
-                NSString *documentBody = [document substringFromIndex:documentTitle.length];
-                documentTitle = [self convertStringToStemString:documentTitle];
-                NSLog(@"1: %@", documentBody);
-                documentBody = [[documentBody componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
+                NSString *documentBody = [document lowercaseString];
+                documentBody = [[documentBody componentsSeparatedByCharactersInSet:[NSCharacterSet punctuationCharacterSet]] componentsJoinedByString:@" "];
+                documentBody = [[documentBody componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@" "];
                 documentBody = [documentBody stringByReplacingOccurrencesOfString:@"|" withString:@""];
-                NSLog(@"2: %@", documentBody);
                 documentBody = [self convertStringToStemString:documentBody];
                 NSDictionary *documentDictionary = @{
-                                                    documentTitle : DOCUMENTS_TITLE_KEY,
-                                                    documentBody : DOCUMENTS_BODY_KEY
+                                                    DOCUMENTS_TITLE_KEY : documentTitle,
+                                                    DOCUMENTS_STEMMED_BODY_KEY : documentBody,
+                                                    DOCUMENTS_SCORE_KEY : @(0)
                                                     };
                 [documentsArray addObject:documentDictionary];
-                
-                
-                NSLog(@"%@", [documentDictionary description]);
+//                NSLog(@"%@", [documentDictionary description]);
             }
+            return [documentsArray copy];
         }
         else {
             NSLog(@"ERROR: Cannot load content of file.");

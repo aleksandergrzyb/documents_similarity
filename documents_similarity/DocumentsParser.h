@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #define DOCUMENTS_TITLE_KEY @"Title"
-#define DOCUMENTS_BODY_KEY @"Body"
+#define DOCUMENTS_STEMMED_BODY_KEY @"Body"
+#define DOCUMENTS_SCORE_KEY @"Score"
 
 @interface DocumentsParser : NSObject
 
