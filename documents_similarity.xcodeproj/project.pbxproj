@@ -13,6 +13,7 @@
 		595A170619E608920093F9E8 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595A170519E608920093F9E8 /* AppKit.framework */; };
 		595A170919E60A8D0093F9E8 /* NSString+PorterStemmer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 595A170819E60A8D0093F9E8 /* NSString+PorterStemmer.mm */; };
 		595A170C19E867F40093F9E8 /* KeywordsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A170B19E867F40093F9E8 /* KeywordsParser.m */; };
+		595A171119E899CA0093F9E8 /* TFIDFSimilarity.m in Sources */ = {isa = PBXBuildFile; fileRef = 595A171019E899CA0093F9E8 /* TFIDFSimilarity.m */; };
 		59895E1519E212D300BE5418 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59895E1419E212D300BE5418 /* main.m */; };
 		59895E1819E212D300BE5418 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59895E1719E212D300BE5418 /* AppDelegate.m */; };
 		59895E1A19E212D300BE5418 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59895E1919E212D300BE5418 /* Images.xcassets */; };
@@ -43,6 +44,8 @@
 		595A170819E60A8D0093F9E8 /* NSString+PorterStemmer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSString+PorterStemmer.mm"; sourceTree = "<group>"; };
 		595A170A19E867F40093F9E8 /* KeywordsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeywordsParser.h; sourceTree = "<group>"; };
 		595A170B19E867F40093F9E8 /* KeywordsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeywordsParser.m; sourceTree = "<group>"; };
+		595A170F19E899CA0093F9E8 /* TFIDFSimilarity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFIDFSimilarity.h; path = Model/TFIDFSimilarity.h; sourceTree = "<group>"; };
+		595A171019E899CA0093F9E8 /* TFIDFSimilarity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFIDFSimilarity.m; path = Model/TFIDFSimilarity.m; sourceTree = "<group>"; };
 		59895E0F19E212D300BE5418 /* documents_similarity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = documents_similarity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59895E1319E212D300BE5418 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59895E1419E212D300BE5418 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -103,6 +106,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		595A171219E899CE0093F9E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				595A170F19E899CA0093F9E8 /* TFIDFSimilarity.h */,
+				595A171019E899CA0093F9E8 /* TFIDFSimilarity.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		59895E0619E212D300BE5418 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +139,7 @@
 				595A170E19E8680C0093F9E8 /* Categories */,
 				595A170419E6061B0093F9E8 /* PorterStemmer */,
 				595A170D19E867F90093F9E8 /* Parsers */,
+				595A171219E899CE0093F9E8 /* Model */,
 				59895E1919E212D300BE5418 /* Images.xcassets */,
 				59895E1B19E212D300BE5418 /* MainMenu.xib */,
 				595A16B419E21A6A0093F9E8 /* MainController.h */,
@@ -265,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				595A171119E899CA0093F9E8 /* TFIDFSimilarity.m in Sources */,
 				595A170319E606180093F9E8 /* porter2_stemmer.mm in Sources */,
 				595A16B619E21A6A0093F9E8 /* MainController.m in Sources */,
 				595A170C19E867F40093F9E8 /* KeywordsParser.m in Sources */,

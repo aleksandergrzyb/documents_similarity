@@ -9,18 +9,32 @@
 #import "MainController.h"
 #import "DocumentsParser.h"
 #import "KeywordsParser.h"
+#import "TFIDFSimilarity.h"
 
 @interface MainController () <NSTableViewDataSource, NSTableViewDelegate>
 @property (weak) IBOutlet NSTableView *tableView;
+@property (weak) IBOutlet NSButton *executeQueryButton;
 @property (weak) IBOutlet NSTextField *documentFileTitle;
 @property (weak) IBOutlet NSTextField *keywordFileTitle;
 @property (weak) IBOutlet NSTextField *queryTextField;
 @property (nonatomic, strong) NSOpenPanel *panel;
 @property (nonatomic, strong) NSArray *keywords;
 @property (nonatomic, strong) NSArray *documents;
+@property (nonatomic) BOOL documentsLoaded;
+@property (nonatomic) BOOL keywordsLoaded;
 @end
 
 @implementation MainController
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.documentsLoaded = NO;
+        self.keywordsLoaded = NO;
+    }
+    return self;
+}
 
 - (NSOpenPanel *)panel
 {
@@ -39,6 +53,10 @@
         self.documentFileTitle.stringValue = [filePath lastPathComponent];
         DocumentsParser *documentsParser = [[DocumentsParser alloc] init];
         self.documents = [documentsParser parseDocumentFromFilePath:filePath];
+        self.documentsLoaded = YES;
+        if (self.keywordsLoaded) {
+            [self.executeQueryButton setEnabled:YES];
+        }
         [self.tableView reloadData];
     }
 }
@@ -50,11 +68,16 @@
         self.keywordFileTitle.stringValue = [filePath lastPathComponent];
         KeywordsParser *keywordsParser = [[KeywordsParser alloc] init];
         self.keywords = [keywordsParser parseKeywordsFromFilePath:filePath];
+        self.keywordsLoaded = YES;
+        if (self.documentsLoaded) {
+            [self.executeQueryButton setEnabled:YES];
+        }
     }
 }
 - (IBAction)executeQueryPressed:(NSButton *)sender
 {
-    
+    self.documents = [TFIDFSimilarity calculateScoresForDocuments:self.documents keywords:self.keywords andQuery:self.queryTextField.stringValue];
+    [self.tableView reloadData];
 }
 
 - (NSString *)openFile

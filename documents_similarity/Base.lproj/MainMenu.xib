@@ -721,7 +721,7 @@
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fxN-mI-6rm">
                         <rect key="frame" x="165" y="217" width="150" height="32"/>
-                        <buttonCell key="cell" type="push" title="Execute Query" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gex-Fe-fb4">
+                        <buttonCell key="cell" type="push" title="Execute Query" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gex-Fe-fb4">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -836,6 +836,7 @@
         <customObject id="qeR-Kc-a8G" customClass="MainController">
             <connections>
                 <outlet property="documentFileTitle" destination="ET8-ek-O99" id="Dde-kP-WT6"/>
+                <outlet property="executeQueryButton" destination="fxN-mI-6rm" id="V6v-3G-XDJ"/>
                 <outlet property="keywordFileTitle" destination="WgA-ra-VFA" id="IG4-xW-o66"/>
                 <outlet property="queryTextField" destination="JFI-op-eZJ" id="ziL-ht-al2"/>
                 <outlet property="tableView" destination="cmi-Sd-ZYp" id="OaL-gQ-ta0"/>

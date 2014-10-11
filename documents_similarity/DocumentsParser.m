@@ -27,7 +27,7 @@
                 NSString *documentBody = [document lowercaseString];
                 documentBody = [[documentBody componentsSeparatedByCharactersInSet:[NSCharacterSet punctuationCharacterSet]] componentsJoinedByString:@" "];
                 documentBody = [[documentBody componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@" "];
-                documentBody = [documentBody stringByReplacingOccurrencesOfString:@"|" withString:@""];
+                documentBody = [documentBody stringByReplacingOccurrencesOfString:@"|" withString:@" "];
                 documentBody = [self convertStringToStemString:documentBody];
                 NSDictionary *documentDictionary = @{
                                                     DOCUMENTS_TITLE_KEY : documentTitle,
