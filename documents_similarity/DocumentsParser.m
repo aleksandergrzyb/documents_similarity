@@ -9,6 +9,7 @@
 #import "DocumentsParser.h"
 #import "NSString+PorterStemmer.h"
 #import "porter2_stemmer.h"
+#import "Constans.h"
 
 @implementation DocumentsParser
 
@@ -32,7 +33,7 @@
                 NSDictionary *documentDictionary = @{
                                                     DOCUMENTS_TITLE_KEY : documentTitle,
                                                     DOCUMENTS_STEMMED_BODY_KEY : documentBody,
-                                                    DOCUMENTS_SCORE_KEY : @(0)
+                                                    DOCUMENTS_SCORE_KEY : [NSNumber numberWithDouble:0.0]
                                                     };
                 [documentsArray addObject:documentDictionary];
 //                NSLog(@"%@", [documentDictionary description]);

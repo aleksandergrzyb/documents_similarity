@@ -19,6 +19,7 @@
 		59895E1A19E212D300BE5418 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59895E1919E212D300BE5418 /* Images.xcassets */; };
 		59895E1D19E212D300BE5418 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59895E1B19E212D300BE5418 /* MainMenu.xib */; };
 		59895E2919E212D300BE5418 /* documents_similarityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59895E2819E212D300BE5418 /* documents_similarityTests.m */; };
+		59956A5C19E92E5300F3FED7 /* Constans.m in Sources */ = {isa = PBXBuildFile; fileRef = 59956A5B19E92E5300F3FED7 /* Constans.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		59895E2219E212D300BE5418 /* documents_similarityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = documents_similarityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59895E2719E212D300BE5418 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59895E2819E212D300BE5418 /* documents_similarityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = documents_similarityTests.m; sourceTree = "<group>"; };
+		59956A5A19E92E5300F3FED7 /* Constans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constans.h; sourceTree = "<group>"; };
+		59956A5B19E92E5300F3FED7 /* Constans.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constans.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,8 @@
 		59895E1219E212D300BE5418 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				59956A5A19E92E5300F3FED7 /* Constans.h */,
+				59956A5B19E92E5300F3FED7 /* Constans.m */,
 				59895E1619E212D300BE5418 /* AppDelegate.h */,
 				59895E1719E212D300BE5418 /* AppDelegate.m */,
 				595A170519E608920093F9E8 /* AppKit.framework */,
@@ -283,6 +288,7 @@
 				595A16B619E21A6A0093F9E8 /* MainController.m in Sources */,
 				595A170C19E867F40093F9E8 /* KeywordsParser.m in Sources */,
 				59895E1819E212D300BE5418 /* AppDelegate.m in Sources */,
+				59956A5C19E92E5300F3FED7 /* Constans.m in Sources */,
 				595A16BB19E226750093F9E8 /* DocumentsParser.m in Sources */,
 				59895E1519E212D300BE5418 /* main.m in Sources */,
 				595A170919E60A8D0093F9E8 /* NSString+PorterStemmer.mm in Sources */,

@@ -8,6 +8,6 @@
 
 #import "Constans.h"
 
-@implementation Constans
-
-@end
+NSString * const DOCUMENTS_TITLE_KEY = @"Title";
+NSString * const DOCUMENTS_STEMMED_BODY_KEY = @"Body";
+NSString * const DOCUMENTS_SCORE_KEY = @"Score";

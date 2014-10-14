@@ -9,12 +9,17 @@
 #import "TFIDFSimilarity.h"
 #import "DocumentsParser.h"
 #import "NSString+PorterStemmer.h"
+#import "Constans.h"
 
 @implementation TFIDFSimilarity
 
 + (NSArray *)calculateScoresForDocuments:(NSArray *)documents keywords:(NSArray *)keywords andQuery:(NSString *)query
 {
-    NSMutableArray *documentsWithCalculatedScores = [documents mutableCopy];
+    NSMutableArray *documentsWithCalculatedScores = [NSMutableArray array];
+    for (NSDictionary *document in documents) {
+        NSMutableDictionary *mutableDocument = [document mutableCopy];
+        [documentsWithCalculatedScores addObject:mutableDocument];
+    }
     if (documents.count > 0 && keywords.count > 0 && query && query.length > 0) {
         // Query stemming
         NSString *stemmedQuery = [TFIDFSimilarity stemmedQuery:query];
@@ -53,11 +58,11 @@
         for (int i = 0; i < keywords.count; i++) {
             int keywordCount = 0;
             for (int a = 0; a < documents.count; a++) {
-                if (documents[a][i] > 0) {
+                if ([documentsBagsOfWords[a][i] integerValue] > 0) {
                     keywordCount++;
                 }
             }
-            double IDFCoefficient = log10(documents.count / keywordCount);
+            double IDFCoefficient = log10((double)documents.count / (double)keywordCount);
             [IDFCoefficients addObject:[NSNumber numberWithDouble:IDFCoefficient]];
         }
         
@@ -73,7 +78,7 @@
         for (int i = 0; i < documents.count; i++) {
             [documentsTFIDFRepresentation addObject:[NSMutableArray array]];
             for (int a = 0; a < keywords.count; a++) {
-                double TFIDFRepresentation = [IDFCoefficients[i] doubleValue] * [documentsTFRepresentation[i][a] doubleValue];
+                double TFIDFRepresentation = [IDFCoefficients[a] doubleValue] * [documentsTFRepresentation[i][a] doubleValue];
                 [documentsTFIDFRepresentation[i] addObject:[NSNumber numberWithDouble:TFIDFRepresentation]];
             }
         }
@@ -110,7 +115,7 @@
         }
         
         for (int i = 0; i < documents.count; i++) {
-            documentsWithCalculatedScores[i][DOCUMENTS_SCORE_KEY] = similarityValues[i];
+            [documentsWithCalculatedScores[i] setObject:similarityValues[i] forKey:DOCUMENTS_SCORE_KEY];
         }
     }
     return documentsWithCalculatedScores;
@@ -124,12 +129,15 @@
             maxiumum = [bagOfWord intValue];
         }
     }
-    NSMutableArray *normalizedBagOfWords = [NSMutableArray array];
-    for (NSNumber *bagOfWord in bagOfWords) {
-        float normalizedValue = [bagOfWord floatValue] / maxiumum;
-        [normalizedBagOfWords addObject:[NSNumber numberWithFloat:normalizedValue]];
+    if (maxiumum > 0) {
+        NSMutableArray *normalizedBagOfWords = [NSMutableArray array];
+        for (NSNumber *bagOfWord in bagOfWords) {
+            float normalizedValue = [bagOfWord floatValue] / maxiumum;
+            [normalizedBagOfWords addObject:[NSNumber numberWithFloat:normalizedValue]];
+        }
+        return normalizedBagOfWords;
     }
-    return normalizedBagOfWords;
+    return bagOfWords;
 }
 
 + (NSString *)stemmedQuery:(NSString *)query

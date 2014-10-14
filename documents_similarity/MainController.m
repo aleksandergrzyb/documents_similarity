@@ -10,6 +10,7 @@
 #import "DocumentsParser.h"
 #import "KeywordsParser.h"
 #import "TFIDFSimilarity.h"
+#import "Constans.h"
 
 @interface MainController () <NSTableViewDataSource, NSTableViewDelegate>
 @property (weak) IBOutlet NSTableView *tableView;
@@ -98,8 +99,11 @@
     return self.documents.count;
 }
 
-#pragma mark -
-#pragma mark Table View Delegate
+- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray *)oldDescriptors
+{
+    self.documents = [self.documents sortedArrayUsingDescriptors:[tableView sortDescriptors]];
+    [tableView reloadData];
+}
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
@@ -114,5 +118,6 @@
     }
     return cellView;
 }
+
 
 @end

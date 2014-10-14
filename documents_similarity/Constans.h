@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Constans : NSObject
-
-@end
+extern NSString * const DOCUMENTS_TITLE_KEY;
+extern NSString * const DOCUMENTS_STEMMED_BODY_KEY;
+extern NSString * const DOCUMENTS_SCORE_KEY;
